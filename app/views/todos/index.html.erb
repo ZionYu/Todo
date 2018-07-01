@@ -1,0 +1,44 @@
+<div class="form container">
+  <table class="table table-condensed table-hover">
+    
+    <thead>
+      <tr>
+      <th>Status</th>
+      <th>Task</th>
+      <th>Due_date</th>
+      <th>Note</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Destroy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @todos.each do |todo|%>
+        <tr>
+          <% if todo.due_date > Date.today %>
+            <td><%= check_box_tag(:name) %></td>
+          <% else %>
+            <td><span class='glyphicon glyphicon-hourglass'></span> 已過期</td>
+          <% end %>
+        
+          
+          <td><%= todo.name%></br></td>
+          <td><%= todo.due_date%></td>
+          <td><%= todo.note%></td>
+          <td><%= link_to '', todo_url(todo),class:"glyphicon glyphicon-search" %></td>
+          <td><%= link_to '', edit_todo_url(todo),class:"glyphicon glyphicon-edit"%></td>
+          <td><%= link_to '', todo_url(todo), method: :delete , data:{comfirm: "Are you sure?"},class: "glyphicon glyphicon-trash" %></td>      
+        </tr>
+    
+      <%end%>
+     </tbody>
+
+   
+
+  </table>
+    <%= link_to 'New Task', new_todo_url%>
+
+ </div>
+
+  
+

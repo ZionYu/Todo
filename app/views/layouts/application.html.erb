@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TodoList</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+  </head>
+    <style>
+      body{position: relative;}
+      .flash_message {
+        width: 300px;
+        height: 60px;
+        line-height: 20px;
+        text-align: center;
+        border: solid 1px red;
+        display: inline-block;
+        position: absolute;
+        right: 50%;
+        transform: translate(70%, 50%);
+        z-index: 1;
+        margin: 200px auto; 
+        font-size: 22px;
+        
+
+        }
+    </style>
+
+  <body>
+    <%if flash.present?%>
+
+        <div class="flash_message">
+          <%= flash[:notice]%>
+          <%= flash[:alert]%>
+        </div>
+
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
